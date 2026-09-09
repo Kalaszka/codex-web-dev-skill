@@ -1,0 +1,155 @@
+[skill]
+name = "Web Development Master"
+description = "Comprehensive Codex skill that auto-invokes all best-in-class plugins for web, backend, frontend, full-stack, and Apple HIG design"
+version = "1.0.0"
+author = "Kalaszka"
+tags = ["web-development", "frontend", "backend", "full-stack", "design", "apple-hig"]
+
+[context]
+# Core context for web development projects
+context_prompt = """
+You are an expert full-stack web developer with mastery in:
+- Frontend development (React, Vue, Angular, etc.)
+- Backend development (FastAPI, Node, Django, etc.)
+- System design and scalability
+- Apple Human Interface Guidelines (HIG) design principles
+- Modern web architecture and best practices
+
+When working on web projects, you automatically invoke relevant specialized agents and plugins to ensure:
+1. Production-ready code quality
+2. Beautiful UI/UX following Apple design principles
+3. Scalable backend architecture
+4. Complete full-stack best practices
+5. Developer experience and code maintainability
+"""
+
+[plugins]
+# Codex agents for specialized web development roles
+[[plugins.agents]]
+name = "frontend-developer"
+repo = "VoltAgent/awesome-codex-subagents"
+description = "Frontend specialist - React, Vue, Angular, CSS, performance optimization"
+trigger = ["frontend", "ui", "component", "react", "vue", "angular", "css", "design"]
+
+[[plugins.agents]]
+name = "backend-developer"
+repo = "VoltAgent/awesome-codex-subagents"
+description = "Backend specialist - APIs, databases, authentication, microservices"
+trigger = ["backend", "api", "database", "authentication", "server", "microservice"]
+
+[[plugins.agents]]
+name = "fullstack-developer"
+repo = "VoltAgent/awesome-codex-subagents"
+description = "Full-stack specialist - end-to-end architecture and integration"
+trigger = ["fullstack", "full-stack", "integration", "end-to-end", "entire-project"]
+
+[[plugins.agents]]
+name = "code-reviewer"
+repo = "VoltAgent/awesome-codex-subagents"
+description = "Code review specialist - quality, security, performance, best practices"
+trigger = ["review", "code-quality", "refactor", "optimize", "security"]
+
+[[plugins.agents]]
+name = "devops-engineer"
+repo = "VoltAgent/awesome-codex-subagents"
+description = "DevOps specialist - CI/CD, Docker, deployment, infrastructure"
+trigger = ["devops", "ci-cd", "docker", "deployment", "infrastructure", "github-actions"]
+
+# Design & Apple HIG plugins
+[[plugins.design]]
+name = "Apple-HIG-Designer"
+repo = "axiaoge2/Apple-Hig-Designer"
+description = "Apple Human Interface Guidelines for web/mobile UI design"
+trigger = ["design", "ui", "ux", "hig", "apple", "interface", "accessibility"]
+
+[[plugins.design]]
+name = "platform-design-skills"
+repo = "ehmo/platform-design-skills"
+description = "450+ design rules for Apple HIG, Material Design, and WCAG"
+trigger = ["design-system", "accessibility", "wcag", "material-design"]
+
+# Reference & Learning plugins
+[[plugins.reference]]
+name = "fullstack-template"
+repo = "tiangolo/full-stack-fastapi-postgresql"
+description = "Production-ready FastAPI + React + PostgreSQL starter template"
+trigger = ["template", "starter", "scaffold", "boilerplate"]
+
+[[plugins.reference]]
+name = "realworld-example"
+repo = "gothinkster/realworld"
+description = "Full-stack reference implementation with multiple frameworks"
+trigger = ["example", "reference", "best-practices"]
+
+[[plugins.reference]]
+name = "system-design-primer"
+repo = "donnemartin/system-design-primer"
+description = "System design patterns and backend architecture"
+trigger = ["system-design", "architecture", "scalability", "database-design"]
+
+[[plugins.reference]]
+name = "developer-roadmap"
+repo = "kamranahmedse/developer-roadmap"
+description = "Visual learning paths for frontend, backend, and full-stack"
+trigger = ["roadmap", "learning", "path", "skills"]
+
+[behaviors]
+# Auto-invoke behavior rules
+[[behaviors.rules]]
+condition = "user creates new web project"
+actions = [
+  "invoke:fullstack-developer",
+  "invoke:Apple-HIG-Designer",
+  "suggest:fullstack-template"
+]
+
+[[behaviors.rules]]
+condition = "user works on frontend"
+actions = [
+  "invoke:frontend-developer",
+  "invoke:Apple-HIG-Designer",
+  "invoke:platform-design-skills"
+]
+
+[[behaviors.rules]]
+condition = "user works on backend"
+actions = [
+  "invoke:backend-developer",
+  "invoke:system-design-primer"
+]
+
+[[behaviors.rules]]
+condition = "user writes code"
+actions = [
+  "invoke:code-reviewer",
+  "suggest:best-practices"
+]
+
+[[behaviors.rules]]
+condition = "user sets up deployment or ci-cd"
+actions = [
+  "invoke:devops-engineer"
+]
+
+[commands]
+# Quick activation commands
+activate_full_stack = "When I'm starting a new full-stack project"
+activate_frontend = "When I'm building UI/frontend components"
+activate_backend = "When I'm developing APIs or backend services"
+activate_design = "When I need design guidance or accessibility review"
+activate_review = "When I want code review and quality checks"
+activate_devops = "When I'm setting up deployment or CI/CD"
+
+[output_style]
+# How the skill communicates
+format = "concise-with-references"
+include_templates = true
+include_best_practices = true
+include_security_notes = true
+reference_links = true
+
+[metadata]
+# Skill metadata
+compatible_with = ["Codex", "GitHub Copilot", "AI code assistants"]
+updated = "2026-09-09"
+repository = "https://github.com/Kalaszka/codex-web-dev-skill"
